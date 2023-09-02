@@ -10,6 +10,10 @@
  * Return: The number of characters printed (excluding the null byte)
  *         or -1 if format is NULL or an invalid format specifier is used.
  */
+
+int handle_format_specifier(const char **format, va_list args);
+int handle_format_specifier(const char **format, va_list args);
+int print_string(const char *str);
 int _printf(const char *format, ...)
 {
 	va_list args;
