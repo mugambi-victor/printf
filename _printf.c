@@ -12,7 +12,6 @@
  */
 
 int handle_format_specifier(const char **format, va_list args);
-int handle_format_specifier(const char **format, va_list args);
 int print_string(const char *str);
 int _printf(const char *format, ...)
 {
@@ -90,6 +89,12 @@ int handle_format_specifier(const char **format, va_list args)
 	{
 		_putchar('%');
 		count++;
+	}
+	else if (**format == 'd' || **format == 'i')
+	{
+		int num = va_arg(args, int);
+
+		count += print_integer(num);
 	}
 	return (count);
 }
