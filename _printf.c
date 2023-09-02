@@ -30,8 +30,24 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
+			/**
+			 * format++;
+			 * count += handle_format_specifier(&format, args);
+			 */
 			format++;
-			count += handle_format_specifier(&format, args);
+			if(*format == '\0')
+			{
+				return (-1);
+			}
+			else if (*format == '%')
+			{
+				_putchar('%');
+				count++;
+			}
+			else
+			{
+				count += handle_format_specifier(&format, args);
+			}
 		}
 		else
 		{
@@ -44,6 +60,7 @@ int _printf(const char *format, ...)
 
 	return (count);
 }
+
 
 /**
  * handle_format_specifier - Handle format specifiers within _printf
